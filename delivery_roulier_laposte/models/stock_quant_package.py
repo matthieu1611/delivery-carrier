@@ -149,6 +149,6 @@ class StockQuantPackage(models.Model):
 
     def _laposte_get_tracking_link(self):
         return (
-            "https://www.colissimo.fr/"
-            "portail_colissimo/suivreResultat.do?"
-            "parcelnumber=%s" % self.parcel_tracking)
+            "https://www.laposte.fr/"
+            "outils/suivre-vos-envois?"
+            "code=%s" % self.parcel_tracking)
