@@ -66,18 +66,20 @@ class StockQuantPackage(models.Model):
             # stands for harmonized_system
             hs = product.get_hs_code_recursively()
             if not hs:
-                raise UserError(_(
-                    "No H.S. Code on product '%s' nor on it's "
-                    "product category '%s'.")
-                    % (product.display_name, product.categ_id.display_name))
+                raise UserError(
+                    _(
+                        "No H.S. Code on product '%s' nor on it's "
+                        "product category '%s'."
+                    )
+                    % (product.display_name, product.categ_id.display_name)
+                )
 
-            article['quantity'] = '%.f' % operation.product_qty
-            article['weight'] = (
-                operation.get_weight() / operation.product_qty)
-            article['originCountry'] = product.origin_country_id.code
-            article['description'] = hs.description
-            article['hs'] = hs.hs_code
-            article['value'] = operation.get_unit_price_for_customs()
+            article["quantity"] = "%.f" % operation.qty_done or operation.product_qty
+            article["weight"] = operation.get_weight() / operation.qty_done or operation.product_qty
+            article["originCountry"] = product.origin_country_id.code
+            article["description"] = hs.description
+            article["hs"] = hs.hs_code
+            article["value"] = operation.get_unit_price_for_customs()
 
         category = picking.customs_category
         return {
