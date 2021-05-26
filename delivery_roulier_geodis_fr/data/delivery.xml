@@ -1,13 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
-<openerp>
-<data>
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
 
     <!-- PARTNER -->
     <record id="partner_geodis" model="res.partner">
         <field name="name">Geodis</field>
-        <field name="is_company" eval="True"/>
-        <field name="customer" eval="False"/>
-        <field name="supplier" eval="True"/>
+        <field name="is_company" eval="True" />
+        <field name="customer" eval="False" />
+        <field name="supplier" eval="True" />
         <field name="street">26 Quai Charles Pasqua</field>
         <field name="zip">92300</field>
         <field name="city">Levallois-Perret</field>
@@ -27,9 +26,9 @@
         <field name="delivery_type">fixed</field>
         <field name="product_type">service</field>
         <field name="carrier_type">geodis</field>
-        <field name="use_detailed_pricelist" eval="1"/>
-        <field name="deposit_slip" eval="True"/>
-        <field name="partner_id" ref="delivery_roulier_geodis.partner_geodis"/>
+        <field name="use_detailed_pricelist" eval="1" />
+        <field name="deposit_slip" eval="True" />
+        <field name="partner_id" ref="delivery_roulier_geodis.partner_geodis" />
     </record>
 
     <record id="delivery_carrier_rap" model="delivery.carrier">
@@ -39,9 +38,9 @@
         <field name="delivery_type">fixed</field>
         <field name="product_type">service</field>
         <field name="carrier_type">geodis</field>
-        <field name="use_detailed_pricelist" eval="1"/>
-        <field name="deposit_slip" eval="True"/>
-        <field name="partner_id" ref="delivery_roulier_geodis.partner_geodis"/>
+        <field name="use_detailed_pricelist" eval="1" />
+        <field name="deposit_slip" eval="True" />
+        <field name="partner_id" ref="delivery_roulier_geodis.partner_geodis" />
     </record>
 
     <record id="delivery_carrier_mes" model="delivery.carrier">
@@ -51,9 +50,9 @@
         <field name="delivery_type">fixed</field>
         <field name="product_type">service</field>
         <field name="carrier_type">geodis</field>
-        <field name="use_detailed_pricelist" eval="1"/>
-        <field name="deposit_slip" eval="True"/>
-        <field name="partner_id" ref="delivery_roulier_geodis.partner_geodis"/>
+        <field name="use_detailed_pricelist" eval="1" />
+        <field name="deposit_slip" eval="True" />
+        <field name="partner_id" ref="delivery_roulier_geodis.partner_geodis" />
     </record>
     <record id="delivery_carrier_top24" model="delivery.carrier">
         <field name="name">Geodis Top24</field>
@@ -62,9 +61,9 @@
         <field name="delivery_type">fixed</field>
         <field name="product_type">service</field>
         <field name="carrier_type">geodis</field>
-        <field name="use_detailed_pricelist" eval="1"/>
-        <field name="deposit_slip" eval="True"/>
-        <field name="partner_id" ref="delivery_roulier_geodis.partner_geodis"/>
+        <field name="use_detailed_pricelist" eval="1" />
+        <field name="deposit_slip" eval="True" />
+        <field name="partner_id" ref="delivery_roulier_geodis.partner_geodis" />
     </record>
 
     <record id="delivery_carrier_cal" model="delivery.carrier">
@@ -74,9 +73,9 @@
         <field name="delivery_type">fixed</field>
         <field name="product_type">service</field>
         <field name="carrier_type">geodis</field>
-        <field name="use_detailed_pricelist" eval="1"/>
-        <field name="deposit_slip" eval="True"/>
-        <field name="partner_id" ref="delivery_roulier_geodis.partner_geodis"/>
+        <field name="use_detailed_pricelist" eval="1" />
+        <field name="deposit_slip" eval="True" />
+        <field name="partner_id" ref="delivery_roulier_geodis.partner_geodis" />
     </record>
 
     <record id="delivery_carrier_p30" model="delivery.carrier">
@@ -86,9 +85,9 @@
         <field name="delivery_type">fixed</field>
         <field name="product_type">service</field>
         <field name="carrier_type">geodis</field>
-        <field name="use_detailed_pricelist" eval="1"/>
-        <field name="deposit_slip" eval="True"/>
-        <field name="partner_id" ref="delivery_roulier_geodis.partner_geodis"/>
+        <field name="use_detailed_pricelist" eval="1" />
+        <field name="deposit_slip" eval="True" />
+        <field name="partner_id" ref="delivery_roulier_geodis.partner_geodis" />
     </record>
 
     <record id="delivery_carrier_inp" model="delivery.carrier">
@@ -98,9 +97,9 @@
         <field name="delivery_type">fixed</field>
         <field name="product_type">service</field>
         <field name="carrier_type">geodis</field>
-        <field name="use_detailed_pricelist" eval="1"/>
-        <field name="deposit_slip" eval="True"/>
-        <field name="partner_id" ref="delivery_roulier_geodis.partner_geodis"/>
+        <field name="use_detailed_pricelist" eval="1" />
+        <field name="deposit_slip" eval="True" />
+        <field name="partner_id" ref="delivery_roulier_geodis.partner_geodis" />
     </record>
 
     <record id="delivery_carrier_mei" model="delivery.carrier">
@@ -110,9 +109,9 @@
         <field name="delivery_type">fixed</field>
         <field name="product_type">service</field>
         <field name="carrier_type">geodis</field>
-        <field name="use_detailed_pricelist" eval="1"/>
-        <field name="deposit_slip" eval="True"/>
-        <field name="partner_id" ref="delivery_roulier_geodis.partner_geodis"/>
+        <field name="use_detailed_pricelist" eval="1" />
+        <field name="deposit_slip" eval="True" />
+        <field name="partner_id" ref="delivery_roulier_geodis.partner_geodis" />
     </record>
 
     <record id="delivery_carrier_cxi" model="delivery.carrier">
@@ -122,9 +121,9 @@
         <field name="delivery_type">fixed</field>
         <field name="product_type">service</field>
         <field name="carrier_type">geodis</field>
-        <field name="use_detailed_pricelist" eval="1"/>
-        <field name="deposit_slip" eval="True"/>
-        <field name="partner_id" ref="delivery_roulier_geodis.partner_geodis"/>
+        <field name="use_detailed_pricelist" eval="1" />
+        <field name="deposit_slip" eval="True" />
+        <field name="partner_id" ref="delivery_roulier_geodis.partner_geodis" />
     </record>
 
     <record id="delivery_carrier_cx" model="delivery.carrier">
@@ -134,9 +133,9 @@
         <field name="delivery_type">fixed</field>
         <field name="product_type">service</field>
         <field name="carrier_type">geodis</field>
-        <field name="use_detailed_pricelist" eval="1"/>
-        <field name="deposit_slip" eval="True"/>
-        <field name="partner_id" ref="delivery_roulier_geodis.partner_geodis"/>
+        <field name="use_detailed_pricelist" eval="1" />
+        <field name="deposit_slip" eval="True" />
+        <field name="partner_id" ref="delivery_roulier_geodis.partner_geodis" />
     </record>
 
     <record id="delivery_carrier_ine" model="delivery.carrier">
@@ -146,9 +145,9 @@
         <field name="delivery_type">fixed</field>
         <field name="product_type">service</field>
         <field name="carrier_type">geodis</field>
-        <field name="use_detailed_pricelist" eval="1"/>
-        <field name="deposit_slip" eval="True"/>
-        <field name="partner_id" ref="delivery_roulier_geodis.partner_geodis"/>
+        <field name="use_detailed_pricelist" eval="1" />
+        <field name="deposit_slip" eval="True" />
+        <field name="partner_id" ref="delivery_roulier_geodis.partner_geodis" />
     </record>
 
     <record id="delivery_carrier_eex" model="delivery.carrier">
@@ -158,9 +157,8 @@
         <field name="delivery_type">fixed</field>
         <field name="product_type">service</field>
         <field name="carrier_type">geodis</field>
-        <field name="use_detailed_pricelist" eval="1"/>
-        <field name="deposit_slip" eval="True"/>
-        <field name="partner_id" ref="delivery_roulier_geodis.partner_geodis"/>
+        <field name="use_detailed_pricelist" eval="1" />
+        <field name="deposit_slip" eval="True" />
+        <field name="partner_id" ref="delivery_roulier_geodis.partner_geodis" />
     </record>
-</data>
-</openerp>
+</odoo>
