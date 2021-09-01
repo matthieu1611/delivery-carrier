@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+
+    <!-- Product -->
+    <record id="ups_product" model="product.product">
+        <field name="default_code">SHIP_UPS</field>
+        <field name="type">service</field>
+        <field name="name">Coûts de livraison - Ups</field>
+    </record>
+
+    <!-- DELIVERY CARRIER -->
+    <record id="delivery_carrier_ups_standard" model="delivery.carrier">
+        <field name="name">UPS Standard</field>
+        <field name="code">11</field>
+        <field name="delivery_type">ups_rest</field>
+        <field name="product_id" ref="ups_product" />
+    </record>
+
+</odoo>
