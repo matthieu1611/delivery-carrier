@@ -168,6 +168,7 @@ class DepositSlip(models.Model):
             attachments += self.env['ir.attachment'].create(vals)
         return attachments
 
+    @api.multi
     def create_edi_file(self):
         self.ensure_one()
         if self.carrier_type == 'geodis':
