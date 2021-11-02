@@ -1,5 +1,6 @@
 # generated from manifests external_dependencies
 PyPDF2
+cerberus
 roulier
 unidecode
 zeep
