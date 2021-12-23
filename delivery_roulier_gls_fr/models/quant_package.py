@@ -46,4 +46,5 @@ class StockQuantPackage(models.Model):
             "parcel_number_barcode": number,
             "custom_sequence": self._get_sequence("gls"),
             "weight": "{:05.2f}".format(self.weight),
+            "reference": self.name,
         }
