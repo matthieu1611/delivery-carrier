@@ -60,7 +60,7 @@ class StockPicking(models.Model):
         gls_keys = ["carrier_gls_agency_id", "carrier_gls_customer_id"]
         config = {
             x.key: x.value
-            for x in self.env["ir.config_parameter"].search([("key", "in", gls_keys)])
+            for x in self.sudo().env["ir.config_parameter"].search([("key", "in", gls_keys)])
         }
         return {
             "agencyId": config.get("carrier_gls_agency_id", ""),
