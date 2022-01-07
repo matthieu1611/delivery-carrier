@@ -55,7 +55,7 @@ class StockPicking(models.Model):
         # TODO FIXME remove when switch from glsbox to gls web api
         for key, val in address.items():
             if val and isinstance(val, str):
-                address[key] = val.encode("ISO-8859-1", "ignore").decode()
+                address[key] = val.encode("ISO-8859-1", "ignore").decode("ISO-8859-1")
         return address
 
     def _gls_fr_glsbox_get_service(self, account, package=None):
