@@ -42,12 +42,12 @@ class StockPicking(models.Model):
             address["street2"],
             address["street3"],
         ) = self.partner_id._get_split_address(3, 35)
+        # it seems only the company field is displayed...so put the contact name
+        # inside anyway
+        if address.get("company"):
+            address['company'] = "%s,%s" % (address["company"], address["name"])
         if "company" not in address:
-            address["company"] = (
-                self.partner_id.parent_id
-                and self.partner_id.parent_id.name
-                or self.partner_id.name
-            )
+            address["company"] = self.partner_id.name
         address["company"] = address["company"][:35]
         address["name"] = address["name"][:35]
         address["mobile"] = self.partner_id.mobile or self.partner_id.phone
