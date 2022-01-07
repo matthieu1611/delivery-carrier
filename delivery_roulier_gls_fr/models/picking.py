@@ -37,11 +37,10 @@ class StockPicking(models.Model):
         address = self._roulier_get_to_address(package=package)
         # TODO improve depending refactoring _roulier_convert_address()
         # specially keys: street2, company, phone, mobile
-        addr = {}
         (
-            addr["street"],
-            addr["street2"],
-            addr["street3"],
+            address["street1"],
+            address["street2"],
+            address["street3"],
         ) = self.partner_id._get_split_address(3, 35)
         if "company" not in address:
             address["company"] = (
@@ -52,6 +51,11 @@ class StockPicking(models.Model):
         address["company"] = address["company"][:35]
         address["name"] = address["name"][:35]
         address["mobile"] = self.partner_id.mobile or self.partner_id.phone
+        # quick hack to remove encoding issues in address
+        # TODO FIXME remove when switch from glsbox to gls web api
+        for key, val in address.items():
+            if val and isinstance(val, str):
+                address[key] = val.encode("ISO-8859-1", "ignore").decode()
         return address
 
     def _gls_fr_glsbox_get_service(self, account, package=None):
