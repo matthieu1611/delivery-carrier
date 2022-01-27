@@ -142,6 +142,14 @@ class StockPicking(models.Model):
         ):
             address["firstName"] = partner.firstname
             address["name"] = partner.lastname
+        if partner.mobile:
+            address["mobilePhone"] = partner.mobile.replace(u"\u00A0", "").replace(
+                " ", ""
+            )
+        if partner.phone:
+            address["homeNumber"] = partner.phone.replace(u"\u00A0", "").replace(
+                " ", ""
+            )
         return address
 
     def _laposte_fr_get_service(self, account, package=None):
