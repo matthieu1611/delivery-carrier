@@ -110,7 +110,7 @@ class DepositSlip(models.Model):
 class StockPicking(models.Model):
     _inherit = "stock.picking"
 
-    deposit_slip_id = fields.Many2one('deposit.slip', 'Deposit Slip')
+    deposit_slip_id = fields.Many2one('deposit.slip', 'Deposit Slip', copy=False)
 
 
 class DeliveryCarrier(models.Model):
