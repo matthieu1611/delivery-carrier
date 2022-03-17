@@ -54,6 +54,10 @@ class DepositSlip(models.Model):
     def _get_carrier_type_selection(self):
         return self.env['delivery.carrier']._get_carrier_type_selection()
 
+    @api.model
+    def _get_default_warehouse(self):
+        return self.env["stock.warehouse"].search([("company_id", "=", self.env.user.company_id.id)], limit=1)
+
     name = fields.Char(
         readonly=True, states={'draft': [('readonly', False)]},
         default='/', copy=False)
@@ -72,6 +76,9 @@ class DepositSlip(models.Model):
         'res.company', string='Company',
         default=lambda self: self.env['res.company']._company_default_get(
             'deposit.slip'))
+    warehouse_id = fields.Many2one(
+        'stock.warehouse', string='Warehouse', required=True,
+        default=_get_default_warehouse)
     weight = fields.Float(
         string='Total Weight', compute='_compute_deposit_slip',
         digits=dp.get_precision('Stock Weight'), readonly=True)

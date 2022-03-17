@@ -32,9 +32,14 @@ class DeliveryDepositWizard(models.TransientModel):
     _rec_name = 'carrier_type'
 
     @api.model
+    def _get_default_warehouse(self):
+        return self.env["stock.warehouse"].search([("company_id", "=", self.env.user.company_id.id)], limit=1)
+
+    @api.model
     def _get_carrier_type_selection(self):
         return self.env['delivery.carrier']._get_carrier_type_selection()
 
+    warehouse_id = fields.Many2one("stock.warehouse", string="Warehouse", default=_get_default_warehouse, required=True)
     carrier_type = fields.Selection(
         '_get_carrier_type_selection', string='Delivery Method Type',
         required=True, help="Carrier type (combines several delivery "
@@ -44,6 +49,7 @@ class DeliveryDepositWizard(models.TransientModel):
     @api.model
     def _prepare_deposit_slip(self):
         return {
+            "warehouse_id": self.warehouse_id.id,
             'carrier_type': self.carrier_type,
             'company_id': self.env.user.company_id.id,
             }
@@ -52,11 +58,14 @@ class DeliveryDepositWizard(models.TransientModel):
     def create_deposit_slip(self):
         # I can't set api.one because I return an action
         self.ensure_one()
-        pickings = self.env['stock.picking'].search([
+        domain = [
             ('carrier_type', '=', self.carrier_type),
             ('deposit_slip_id', '=', False),
             ('state', '=', 'done'),
-            ])
+        ]
+        if self.warehouse_id:
+            domain.append(("picking_type_id.warehouse_id", "=", self.warehouse_id.id))
+        pickings = self.env['stock.picking'].search(domain)
         if pickings:
             vals = self._prepare_deposit_slip()
             deposit = self.env['deposit.slip'].create(vals)

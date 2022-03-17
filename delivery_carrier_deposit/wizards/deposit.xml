@@ -9,6 +9,7 @@
     <field name="arch" type="xml">
         <form string="Create Deposit Slip">
             <group name="main">
+                <field name="warehouse_id" colspan="2"/>
                 <field name="carrier_type" colspan="2"/>
             </group>
             <footer>
