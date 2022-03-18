@@ -21,6 +21,18 @@ class DepositSlip(models.Model):
             weight += picking.shipping_weight
         self.weight = weight
 
+    def _get_default_warehouse(self):
+        return self.env["stock.warehouse"].search(
+            [("company_id", "=", self.env.company.id)], limit=1
+        )
+
+    warehouse_id = fields.Many2one(
+        "stock.warehouse",
+        required=True,
+        string="Warehouse",
+        default=_get_default_warehouse,
+        check_company=True,
+    )
     name = fields.Char(
         readonly=True, states={"draft": [("readonly", False)]}, default="/", copy=False
     )

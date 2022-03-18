@@ -13,6 +13,17 @@ class DeliveryDepositWizard(models.TransientModel):
     _name = "delivery.deposit.wizard"
     _description = "Wizard to create Deposit Slip"
 
+    def _get_default_warehouse(self):
+        return self.env["stock.warehouse"].search(
+            [("company_id", "=", self.env.company.id)], limit=1
+        )
+
+    warehouse_id = fields.Many2one(
+        "stock.warehouse",
+        required=True,
+        string="Warehouse",
+        default=_get_default_warehouse,
+    )
     delivery_type = fields.Selection(
         selection=lambda self: self.env["delivery.carrier"]
         ._fields["delivery_type"]
@@ -24,8 +35,9 @@ class DeliveryDepositWizard(models.TransientModel):
     def _prepare_deposit_slip(self):
         self.ensure_one()
         return {
+            "warehouse_id": self.warehouse_id.id,
             "delivery_type": self.delivery_type,
-            "company_id": self.env.company.id
+            "company_id": self.env.company.id,
         }
 
     def _fetch_pickings(self):
@@ -38,6 +50,7 @@ class DeliveryDepositWizard(models.TransientModel):
                 ("carrier_id", "in", carriers.ids),
                 ("deposit_slip_id", "=", False),
                 ("state", "=", "done"),
+                ("picking_type_id.warehouse_id", "=", self.warehouse_id.id),
             ]
         )
         return pickings
